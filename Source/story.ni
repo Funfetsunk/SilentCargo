@@ -38,6 +38,57 @@ The Bridge is north of the Navigation Console.
 
 The player is in the Airlock.
 
+Ship-power is a truth state that varies. Ship-power is false.
+
+The EVA suit lockers are scenery in the Airlock.
+The description is "A row of emergency EVA suit lockers is built into the wall. Most of them hang open and empty. Whatever happened here, the crew took the suits with them."
+
+The reinforced container is scenery in the Cargo Hold.
+The description is "A heavy cargo container, bolted to the deck and wired into the ship through thick power conduits. Its surface is marked with a faded Helios Systems Research Division seal."
+
+The reactor console is scenery in the Reactor Control.
+The description is "The main reactor control console. Most systems are offline, but manual controls are still accessible."
+
+The engineering console is scenery in the Engineering.
+The description is "A dark control console with a few faint amber indicators still glowing under emergency power."
+
+The medbay terminal is scenery in the Medbay.
+The description is "A compact medical terminal mounted beside the diagnostic bed. Its screen is dark, but a standby light pulses faintly."
+
+The captain's terminal is scenery in the Captain's Cabin.
+The description is "A private command terminal set into the captain's desk. The screen is dark, awaiting input."
+
+The navigation panels are scenery in the Navigation Console.
+The description is "Dark navigation panels surround the console, their displays inactive under emergency power."
+
+The comms array is scenery in the Navigation Console.
+The description is "A communications panel used to transmit long-range signals. It appears offline."
+
+The command console is scenery in the Bridge.
+The description is "The main command console of the ship. It is currently unpowered."
+
+The viewscreen is scenery in the Bridge.
+The description is "Through the forward viewing port, the stars hang cold and motionless."
+
+Instead of opening the reinforced container:
+	say "The reinforced container is locked down by heavy clamps.";
+	
+Instead of switching on the reactor console:
+	if ship-power is false:
+		now ship-power is true;
+		say "You engage the reactor controls. For a moment, nothing happens. Then a deep hum builds beneath your feet as power flows back into the ship. Lights flicker on throughout the corridors.";
+	otherwise:
+		say "The reactor is already running at full power.";
+
+Instead of switching on the engineering console:
+	say "The console flickers, but emergency power is too limited to bring it fully online.";
+
+Instead of switching on the medbay terminal:
+	say "The terminal gives a weak pulse of light, then settles back into standby mode.";
+
+Instead of switching on the captain's terminal:
+	say "The captain's terminal remains dark. It may need full power before it can be used.";
+
 After looking:
 	say "Exits: ";
 	let first be true;
