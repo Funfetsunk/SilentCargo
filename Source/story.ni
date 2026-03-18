@@ -7,11 +7,16 @@ Chapter 1 - Story Metadata
 The story headline is "A sci-fi mystery aboard the T-7366D Second Voice".
 The story description is "Board the derelict transport ship, recover the cargo, and discover what happened to the crew."
 
+Release along with a website and an interpreter.
+
 Chapter 2 - Global State
 
 Ship-power is a truth state that varies. Ship-power is false.
 Sleep data reviewed is a truth state that varies. Sleep data reviewed is false.
 A thing can be accessed or unaccessed. A thing is usually unaccessed.
+Captain logs reviewed is a truth state that varies. Captain logs reviewed is false.
+A thing can be locked or unlocked. A thing is usually unlocked.
+A thing can be secured or unsecured. A thing is usually unsecured.
 
 Part 2 - Rooms
 
@@ -71,7 +76,7 @@ The description is "A dark control console with a few faint amber indicators sti
 The medbay terminal is scenery in the Medbay. It is unaccessed.
 The description is "A compact medical terminal mounted beside the diagnostic bed. Its screen is dark, but a standby light pulses faintly."
 
-The captain's terminal is scenery in the Captain's Cabin.
+The captain's terminal is scenery in the Captain's Cabin. It is unaccessed. It is secured.
 The description is "A private command terminal set into the captain's desk. The screen is dark, awaiting input."
 
 The navigation panels are scenery in the Navigation Console.
@@ -86,6 +91,10 @@ The description is "The main command console of the ship. It is currently unpowe
 The viewscreen is scenery in the Bridge.
 The description is "Through the forward viewing port, the stars hang cold and motionless."
 
+The captain's keycard is in the Crew Quarters.
+The captain's keycard is portable.
+The description is "A slim access card marked with Captain Mara Voss's clearance seal."
+
 Part 4 - Rules and Interactions
 
 Viewing crew status is an action applying to nothing.
@@ -99,6 +108,26 @@ Understand "view diagnostic data" as viewing diagnostic data.
 Using is an action applying to one thing.
 Understand "use [something]" as using.
 Understand "access [something]" as using.
+
+Viewing captain logs is an action applying to nothing.
+Viewing captain log 1 is an action applying to nothing.
+Viewing captain log 2 is an action applying to nothing.
+Viewing captain log 3 is an action applying to nothing.
+Viewing captain log 4 is an action applying to nothing.
+
+Understand "view captain logs" as viewing captain logs.
+Understand "view logs" as viewing captain logs.
+Understand "view log 1" as viewing captain log 1.
+Understand "view log 2" as viewing captain log 2.
+Understand "view log 3" as viewing captain log 3.
+Understand "view log 4" as viewing captain log 4.
+
+Understand "use [something] on [something]" as unlocking it with.
+Understand "swipe [something] on [something]" as unlocking it with.
+Understand "use [something] with [something]" as unlocking it with.
+
+Instead of unlocking something with something:
+	say "That doesn't seem to work."
 
 Instead of opening the reinforced container:
 	say "The reinforced container is locked down by heavy clamps.";
@@ -191,6 +220,111 @@ Instead of switching on the captain's terminal:
 		say "The captain's terminal remains dark. It may need full power before it can be used.";
 	otherwise:
 		say "The captain's terminal is already powered, awaiting an access command."
+		
+Instead of examining the captain's terminal:
+	if ship-power is false:
+		say "The captain's terminal remains dark under emergency power.";
+	otherwise if the captain's terminal is secured:
+		say "The screen glows faintly, then displays: ACCESS RESTRICTED. A command-level keycard is required.";
+	otherwise:
+		now the captain's terminal is accessed;
+		say "The captain's terminal wakes at your touch. A command header appears, followed by a list of personal logs.[paragraph break]";
+		say "Available options:[line break]";
+		say "- view captain logs[line break]";
+		say "- view log 1[line break]";
+		say "- view log 2[line break]";
+		say "- view log 3[line break]";
+		say "- view log 4";
+		
+Instead of using the captain's terminal:
+	try examining the captain's terminal.
+	
+Instead of unlocking the captain's terminal with the captain's keycard:
+	if ship-power is false:
+		say "The terminal is still without full power.";
+	otherwise if the player does not carry the captain's keycard:
+		say "You need to be holding the captain's keycard first.";
+	otherwise:
+		now the captain's terminal is unsecured;
+		now the captain's terminal is accessed;
+		say "You swipe the keycard across the terminal reader. The screen wakes with a soft chime.[paragraph break]";
+		say "Available options:[line break]";
+		say "- view captain logs[line break]";
+		say "- view log 1[line break]";
+		say "- view log 2[line break]";
+		say "- view log 3[line break]";
+		say "- view log 4";
+	
+Instead of examining the captain's terminal:
+	if ship-power is false:
+		say "The captain's terminal remains dark under emergency power.";
+	otherwise if the captain's terminal is secured:
+		say "The screen glows faintly, then displays: ACCESS RESTRICTED. A command-level keycard is required.";
+	otherwise:
+		now the captain's terminal is accessed;
+		say "The captain's terminal wakes at your touch. A command header appears, followed by a list of personal logs.[paragraph break]";
+		say "Available options:[line break]";
+		say "- view captain logs[line break]";
+		say "- view log 1[line break]";
+		say "- view log 2[line break]";
+		say "- view log 3[line break]";
+		say "- view log 4";
+
+Instead of viewing captain log 1:
+	if the location is not the Captain's Cabin:
+		say "You need to be at the captain's terminal to do that.";
+	otherwise if ship-power is false:
+		say "The captain's terminal is still dark under emergency power.";
+	otherwise if the captain's terminal is secured:
+		say "The captain's terminal is locked. A command-level keycard is required.";
+	otherwise if the captain's terminal is unaccessed:
+		say "You need to access the captain's terminal first.";
+	otherwise:
+		say "Personal Log — Captain Mara Voss[paragraph break]";
+		say "Minor irregularities continue across several ship systems. Mercer reports unexplained power fluctuations, while Dr. Vale notes increasing fatigue among the crew. I have instructed everyone to remain on schedule and avoid speculation until we have clearer data.";
+
+Instead of viewing captain log 2:
+	if the location is not the Captain's Cabin:
+		say "You need to be at the captain's terminal to do that.";
+	otherwise if ship-power is false:
+		say "The captain's terminal is still dark under emergency power.";
+	otherwise if the captain's terminal is secured:
+		say "The captain's terminal is locked. A command-level keycard is required.";
+	otherwise if the captain's terminal is unaccessed:
+		say "You need to access the captain's terminal first.";
+	otherwise:
+		say "Personal Log — Captain Mara Voss[paragraph break]";
+		say "Kest insists the cargo manifest is wrong. Mercer has confirmed the container is drawing reactor power well above the listed requirements. I reminded them both that Helios Systems Research Division sealed the shipment under directive, and that our responsibility is transport, not inspection. Even so... I do not like this.";
+
+Instead of viewing captain log 3:
+	if the location is not the Captain's Cabin:
+		say "You need to be at the captain's terminal to do that.";
+	otherwise if ship-power is false:
+		say "The captain's terminal is still dark under emergency power.";
+	otherwise if the captain's terminal is secured:
+		say "The captain's terminal is locked. A command-level keycard is required.";
+	otherwise if the captain's terminal is unaccessed:
+		say "You need to access the captain's terminal first.";
+	otherwise:
+		say "Personal Log — Captain Mara Voss[paragraph break]";
+		say "Mercer believes the cargo is interacting with the ship's systems. I resisted that conclusion, but command functions are no longer responding consistently. Vale has shown me medical data that cannot be explained by fatigue alone. Environmental changes, sleep disruption, behavioural drift. Something is acting on this crew. I am beginning to think Mercer is right.";
+
+Instead of viewing captain log 4:
+	if the location is not the Captain's Cabin:
+		say "You need to be at the captain's terminal to do that.";
+	otherwise if ship-power is false:
+		say "The captain's terminal is still dark under emergency power.";
+	otherwise if the captain's terminal is secured:
+		say "The captain's terminal is locked. A command-level keycard is required.";
+	otherwise if the captain's terminal is unaccessed:
+		say "You need to access the captain's terminal first.";
+	otherwise:
+		say "Personal Log — Captain Mara Voss[paragraph break]";
+		say "This will be my last entry. The ship is no longer fully under our control. Commands are being denied. Reed cannot get a distress signal out. Mercer says the airlock may be the only compartment it cannot hear clearly. We are moving there now. If anyone finds this ship after us, do not trust the silence.";
+
+After going from the Captain's Cabin:
+	now the captain's terminal is unaccessed;
+	now Captain logs reviewed is false.
 
 After looking:
 	say "Exits: ";
