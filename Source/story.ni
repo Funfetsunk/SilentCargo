@@ -211,6 +211,30 @@ Understand "continue" as continuing.
 Understand "next" as continuing.
 Understand "proceed" as continuing.
 
+Rule for printing the banner text:
+	say "[bold type]Helios Systems — Recovery Assignment[roman type][paragraph break]";
+	say "Vessel ID: T-7366D[paragraph break]";
+	say "Status: Missing[paragraph break]";
+	say "Crew: Unresponsive[paragraph break]";
+	say "Primary Objective: Investigate vessel and recover assigned cargo.[paragraph break]";
+	say "Secondary Objective: Assess cause of communication failure.[paragraph break]";
+	say "[line break]";
+	say "No distress signal was successfully recorded.[paragraph break]";
+	say "Last known position has been stabilised for boarding.[paragraph break]";
+	say "[paragraph break]";
+	say "[italic type]You are authorised to proceed.[roman type][paragraph break]";
+	say "[line break]";
+	say "The airlock cycles open with a dull, mechanical thud.[paragraph break]";
+	say "Cold air spills out to meet you.[paragraph break]";
+	say "Beyond it, the ship is dark.[paragraph break]";
+	say "[paragraph break]";
+	say "No movement. No sound.[paragraph break]";
+	say "[paragraph break]";
+	say "Just the faint hum of systems running somewhere deeper inside.[paragraph break]";
+	say "[paragraph break]";
+	say "You step aboard.[paragraph break]";
+	say "[line break]--- Boarding Complete ---[paragraph break]";
+
 Before examining the scratched warning:
 	if ship-power is false:
 		say "You can't make anything out in the darkness." instead.
