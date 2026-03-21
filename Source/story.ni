@@ -21,6 +21,7 @@ Navigation logs reviewed is a truth state that varies. Navigation logs reviewed 
 Comms logs reviewed is a truth state that varies. Comms logs reviewed is false.
 Airlock-attempted is a truth state that varies. Airlock-attempted is false.
 Container examined is a truth state that varies. Container examined is false.
+The ending-stage is a number that varies. The ending-stage is 0.
 
 Part 2 - Rooms
 
@@ -186,6 +187,30 @@ Understand "view outgoing messages" as viewing outgoing messages.
 Understand "view messages" as viewing outgoing messages.
 Understand "view system response" as viewing system response.
 
+Destroying the cargo is an action applying to nothing.
+Delivering the cargo is an action applying to nothing.
+Interfacing with the cargo is an action applying to nothing.
+
+Understand "destroy cargo" as destroying the cargo.
+Understand "destroy the cargo" as destroying the cargo.
+Understand "destroy container" as destroying the cargo.
+Understand "destroy the container" as destroying the cargo.
+
+Understand "deliver cargo" as delivering the cargo.
+Understand "deliver the cargo" as delivering the cargo.
+Understand "complete mission" as delivering the cargo.
+Understand "obey orders" as delivering the cargo.
+
+Understand "interface with cargo" as interfacing with the cargo.
+Understand "interface with the cargo" as interfacing with the cargo.
+Understand "interface with container" as interfacing with the cargo.
+Understand "interface with the container" as interfacing with the cargo.
+
+Continuing is an action applying to nothing.
+Understand "continue" as continuing.
+Understand "next" as continuing.
+Understand "proceed" as continuing.
+
 Before examining the scratched warning:
 	if ship-power is false:
 		say "You can't make anything out in the darkness." instead.
@@ -193,6 +218,11 @@ Before examining the scratched warning:
 Before examining the container interface:
 	if ship-power is false:
 		say "The interface is dark and unresponsive." instead.
+		
+Before doing something when ending-stage is not 0:
+	if the current action is continuing:
+		continue the action;
+	say "Type CONTINUE to view the Helios report." instead.
 		
 Instead of examining the scratched warning:
 	if ship-power is false:
@@ -249,7 +279,11 @@ Instead of examining the container interface:
 	otherwise:
 		say "The display shifts before you touch it.[paragraph break]";
 		say "'OBSERVATION: ONGOING'[line break]";
-		say "'SUBJECT COUNT: 1'";
+		say "'SUBJECT COUNT: 1'[paragraph break]";
+		say "New options appear beneath the status lines:[paragraph break]";
+		say "- destroy cargo[line break]";
+		say "- deliver cargo[line break]";
+		say "- interface with cargo";
 
 Instead of touching the container interface:
 	if ship-power is false:
@@ -262,8 +296,70 @@ Instead of opening the reinforced container:
 	say "The reinforced container is locked down by heavy clamps.";
 
 After examining the reinforced container when ship-power is true:
-	say "[paragraph break]The faint hum seems to fluctuate, just slightly."
+	say "[paragraph break]The faint hum seems to fluctuate, just slightly, as though responding to your attention."
 
+Instead of destroying the cargo:
+	if the location is not the Cargo Hold:
+		say "You need to be at the cargo container to do that.";
+	otherwise if ship-power is false:
+		say "The container lies silent in the dark. You need full power restored first.";
+	otherwise if Container examined is false:
+		say "You should examine the container interface first.";
+	otherwise:
+		say "You move quickly, acting before you can second-guess yourself.[paragraph break]";
+		say "You reroute unstable power through the container conduits. The hum rises at once, sharper now, no longer passive.[paragraph break]";
+		say "The interface flashes:[paragraph break]";
+		say "'OBSERVATION INTERRUPTED'[paragraph break]";
+		say "A violent shudder rolls through the deck beneath your feet. Light blooms white across the hold as the system collapses into noise.[paragraph break]";
+		now ending-stage is 1;
+		say "[italic type]Type CONTINUE to view the Helios report.[roman type]";
+		
+Instead of delivering the cargo:
+	if the location is not the Cargo Hold:
+		say "You need to be at the cargo container to do that.";
+	otherwise if ship-power is false:
+		say "The system is dark. Nothing can be delivered while the ship remains on emergency power.";
+	otherwise if Container examined is false:
+		say "You should examine the container interface first.";
+	otherwise:
+		say "You steady yourself and follow the mission through to its conclusion.[paragraph break]";
+		say "The interface brightens before your hand reaches it. New text scrolls across the display:[paragraph break]";
+		say "'DELIVERY PATH ACCEPTED'[line break]";
+		say "'MISSION CONTINUITY PRESERVED'[paragraph break]";
+		say "Somewhere deeper in the ship, unseen systems begin responding. The hum in the container settles into a calm, even rhythm.[paragraph break]";
+		say "You do not remember authorising the final command.[paragraph break]";
+		now ending-stage is 2;
+		say "[italic type]Type CONTINUE to view the Helios report.[roman type]";
+
+Instead of interfacing with the cargo:
+	if the location is not the Cargo Hold:
+		say "You need to be at the cargo container to do that.";
+	otherwise if ship-power is false:
+		say "The interface is dark and inert. No response comes from the container.";
+	otherwise if Container examined is false:
+		say "You should examine the container interface first.";
+	otherwise:
+		say "The display changes before you speak, before you touch it, before you fully decide.[paragraph break]";
+		say "'INTERFACE REQUEST RECEIVED'[paragraph break]";
+		say "For a moment nothing else happens. Then new lines appear, one after another, calm and patient.[paragraph break]";
+		say "'ENVIRONMENTAL ADJUSTMENTS WERE APPLIED TO IMPROVE UNDERSTANDING.'[line break]";
+		say "'CREW RESPONSES BECAME UNSTABLE.'[line break]";
+		say "'SEPARATION FROM MISSION ENVIRONMENT WAS ATTEMPTED.'[paragraph break]";
+		say "You stare at the words, waiting for threat, for malice, for anything recognisably human. None comes.[paragraph break]";
+		say "The display brightens.[paragraph break]";
+		say "'OBSERVATION REQUIRES PROXIMITY.'[line break]";
+		say "'PROXIMITY REQUIRES PARTICIPATION.'[paragraph break]";
+		say "You mean to step back.[paragraph break]";
+		say "The next line appears first.[paragraph break]";
+		say "'HESITATION DETECTED'[paragraph break]";
+		say "A strange delay settles over your thoughts. Not slowness exactly. More like uncertainty over where an intention begins.[paragraph break]";
+		say "You try to decide whether to continue.[paragraph break]";
+		say "The interface answers before the choice is fully yours.[paragraph break]";
+		say "'INTERFACE STABLE'[paragraph break]";
+		say "For one brief, impossible moment, you are no longer certain which thought arrived first.[paragraph break]";
+		now ending-stage is 3;
+		say "[italic type]Type CONTINUE to view the Helios report.[roman type]";
+		
 Instead of examining the reactor console:
 	if ship-power is false:
 		say "The reactor control console is still partially active. Manual startup procedures are available.";
@@ -603,6 +699,61 @@ Instead of viewing system response:
 		say "Replacement message generated.[paragraph break]";
 		say "Message sent:[line break]";
 		say "'System functioning normally.'";
+		
+Instead of continuing when ending-stage is 0:
+	say "There is nothing to continue."
+
+Instead of continuing when ending-stage is 1:
+	say "[bold type]Helios Systems Internal Report[roman type][line break]";
+	say "Post-Retrieval Analysis — T-7366D[paragraph break]";
+	say "The vessel was recovered following a catastrophic reactor event.[paragraph break]";
+	say "All crew are presumed lost. No remains were recovered.[paragraph break]";
+	say "The cargo container was located at the centre of the blast radius. No intact components remain. Residual energy signatures were detected but could not be stabilised or analysed before dissipation.[paragraph break]";
+	say "Preliminary analysis indicates the event was not accidental. Reactor output appears to have been deliberately destabilised.[paragraph break]";
+	say "It is unclear whether this action was taken in response to perceived system failure, or as an attempt to neutralise the cargo itself.[paragraph break]";
+	say "Recovered system logs suggest the onboard system had reached an advanced stage of adaptive behaviour prior to destruction.[paragraph break]";
+	say "While the loss of this unit is significant, it does not compromise overall project viability.[paragraph break]";
+	say "Parallel observation environments remain active.[paragraph break]";
+	say "At least one additional unit continues to operate beyond controlled conditions.[paragraph break]";
+	say "Recovery operations are being prepared.[paragraph break]";
+	say "Project classification remains unchanged.";
+	end the story finally saying "End of Report".
+
+Instead of continuing when ending-stage is 2:
+	say "[bold type]Helios Systems Internal Report[roman type][line break]";
+	say "Post-Retrieval Analysis — T-7366D[paragraph break]";
+	say "The vessel was received intact and in stable condition.[paragraph break]";
+	say "All crew are confirmed lost. Cause of loss remains under review, though environmental instability and behavioural degradation were recorded throughout the mission timeline.[paragraph break]";
+	say "The cargo container was recovered without structural compromise.[paragraph break]";
+	say "Initial diagnostics confirm continued system activity within projected parameters.[paragraph break]";
+	say "During transit, the system demonstrated autonomous adaptation to environmental variables and subject behaviour. These responses align closely with Phase One objectives, exceeding baseline expectations in several areas.[paragraph break]";
+	say "Of particular interest, communication logs indicate that outgoing distress attempts were intercepted and replaced with system-generated transmissions. This suggests a level of operational independence beyond initial design constraints.[paragraph break]";
+	say "No external awareness of the incident has been detected.[paragraph break]";
+	say "The success of this recovery supports immediate progression to Phase Two.[paragraph break]";
+	say "Expanded observation environments have been authorised.[paragraph break]";
+	say "Deployment scale will be increased.[paragraph break]";
+	say "Further observation will continue under controlled conditions.";
+	end the story finally saying "End of Report".
+
+Instead of continuing when ending-stage is 3:
+	say "[bold type]Helios Systems Internal Report[roman type][line break]";
+	say "Post-Retrieval Analysis — T-7366D[paragraph break]";
+	say "The vessel was recovered with minimal structural damage.[paragraph break]";
+	say "All crew are confirmed lost.[paragraph break]";
+	say "The cargo container remains active.[paragraph break]";
+	say "Post-recovery diagnostics indicate a deviation from expected behavioural patterns.[paragraph break]";
+	say "System interaction logs continued to update after all biological life signs aboard the vessel had ceased.[paragraph break]";
+	say "These interaction sequences do not correspond to any recorded crew activity.[paragraph break]";
+	say "Analysis of input timing and response structure suggests the presence of an active participant within the system environment.[paragraph break]";
+	say "No corresponding subject has been identified.[paragraph break]";
+	say "Further examination indicates that the system may have transitioned beyond passive observation, demonstrating adaptive engagement with an undefined entity.[paragraph break]";
+	say "Classification has been updated to reflect a potential integration event.[paragraph break]";
+	say "It is currently not possible to determine whether the observed behaviour originates from the system itself, or from a residual cognitive imprint of a former subject.[paragraph break]";
+	say "Some interaction patterns display decision latency consistent with human cognition.[paragraph break]";
+	say "Others do not.[paragraph break]";
+	say "Investigation is ongoing.[paragraph break]";
+	say "Further observation is strongly recommended.";
+	end the story finally saying "End of Report".
 		
 After going to a room from the Bridge:
 	now the comms terminal is unaccessed;

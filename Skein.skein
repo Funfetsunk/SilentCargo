@@ -314,6 +314,7 @@
     <changed>NO</changed>
     <children>
       <child nodeId="node-36"/>
+      <child nodeId="node-489"/>
       <child nodeId="node-95"/>
       <child nodeId="node-475"/>
     </children>
@@ -2172,6 +2173,255 @@
   <item nodeId="node-463">
     <command xml:space="preserve">view system response</command>
     <result xml:space="preserve">System Response Log:&#x000A;&#x000A;Outgoing transmission intercepted.&#x000A;Replacement message generated.&#x000A;&#x000A;Message sent:&#x000A;"System functioning normally."&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-489">
+    <command xml:space="preserve">restore power</command>
+    <result xml:space="preserve">You engage the reactor controls. For a moment, nothing happens.&#x000A;&#x000A;Then a deep hum builds beneath your feet as power flows back into the ship.&#x000A;&#x000A;Lights flicker on throughout the corridors.&#x000A;&#x000A;Reactor Control&#x000A;The reactor monitoring panels are alive with light now, feeding a steady stream of system data across their screens.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-490"/>
+    </children>
+  </item>
+  <item nodeId="node-490">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Cargo Hold&#x000A;The cargo hold is washed in cold industrial light. Empty racks cast long shadows across the deck, while the reinforced container sits under a steady glow, its power conduits clearly visible now.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-491"/>
+    </children>
+  </item>
+  <item nodeId="node-491">
+    <command xml:space="preserve">x reinforced cargo</command>
+    <result xml:space="preserve">I only understood you as far as wanting to examine the reinforced container.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-492"/>
+    </children>
+  </item>
+  <item nodeId="node-492">
+    <command xml:space="preserve">x cargo</command>
+    <result xml:space="preserve">You can't see any such thing.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-493"/>
+    </children>
+  </item>
+  <item nodeId="node-493">
+    <command xml:space="preserve">x reinforced container</command>
+    <result xml:space="preserve">The container hums faintly. Thick power conduits feed into its base, pulsing with a steady rhythm. A small interface panel glows softly on its side.&#x000A;&#x000A;&#x000A;&#x000A;The faint hum seems to fluctuate, just slightly, as though responding to your attention.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-494"/>
+    </children>
+  </item>
+  <item nodeId="node-494">
+    <command xml:space="preserve">x reinforced container</command>
+    <result xml:space="preserve">The container hums faintly. Thick power conduits feed into its base, pulsing with a steady rhythm. A small interface panel glows softly on its side.&#x000A;&#x000A;&#x000A;&#x000A;The faint hum seems to fluctuate, just slightly, as though responding to your attention.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-495"/>
+    </children>
+  </item>
+  <item nodeId="node-495">
+    <command xml:space="preserve">x container interface</command>
+    <result xml:space="preserve">The interface flickers as you approach.&#x000A;&#x000A;Display:&#x000A;&#x000A;"STATUS: ACTIVE"&#x000A;"ENVIRONMENT: STABLE"&#x000A;"OBSERVATION: IN PROGRESS"&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-496"/>
+    </children>
+  </item>
+  <item nodeId="node-496">
+    <command xml:space="preserve">x container interface</command>
+    <result xml:space="preserve">The display shifts before you touch it.&#x000A;&#x000A;"OBSERVATION: ONGOING"&#x000A;"SUBJECT COUNT: 1"&#x000A;&#x000A;New options appear beneath the status lines:&#x000A;&#x000A;- destroy cargo&#x000A;- deliver cargo&#x000A;- interface with cargo&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-497"/>
+    </children>
+  </item>
+  <item nodeId="node-497">
+    <command xml:space="preserve">destroy cargo</command>
+    <result xml:space="preserve">You move quickly, acting before you can second-guess yourself.&#x000A;&#x000A;You reroute unstable power through the container conduits. The hum rises at once, sharper now, no longer passive.&#x000A;&#x000A;The interface flashes:&#x000A;&#x000A;"OBSERVATION INTERRUPTED"&#x000A;&#x000A;A violent shudder rolls through the deck beneath your feet. Light blooms white across the hold as the system collapses into noise.&#x000A;&#x000A;Helios Systems Internal Report&#x000A;Post-Retrieval Analysis - T-7366D&#x000A;&#x000A;The vessel was recovered following a catastrophic reactor event.&#x000A;&#x000A;All crew are presumed lost. No remains were recovered.&#x000A;&#x000A;The cargo container was located at the centre of the blast radius. No intact components remain. Residual energy signatures were detected but could not be stabilised or analysed before dissipation.&#x000A;&#x000A;Preliminary analysis indicates the event was not accidental. Reactor output appears to have been deliberately destabilised.&#x000A;&#x000A;It is unclear whether this action was taken in response to perceived system failure, or as an attempt to neutralise the cargo itself.&#x000A;&#x000A;Recovered system logs suggest the onboard system had reached an advanced stage of adaptive behaviour prior to destruction.&#x000A;&#x000A;While the loss of this unit is significant, it does not compromise overall project viability.&#x000A;&#x000A;Parallel observation environments remain active.&#x000A;&#x000A;At least one additional unit continues to operate beyond controlled conditions.&#x000A;&#x000A;Recovery operations are being prepared.&#x000A;&#x000A;Project classification remains unchanged.&#x000A;&#x000A;&#x000A;&#x000A;    *** End of Report ***&#x000A;&#x000A;&#x000A;&#x000A;Would you like to RESTART, RESTORE a saved game, QUIT or UNDO the last command?&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-498"/>
+    </children>
+  </item>
+  <item nodeId="node-498">
+    <command xml:space="preserve">restart</command>
+    <result xml:space="preserve">Silent Cargo&#x000A;A sci-fi mystery aboard the T-7366D Second Voice by Thomas Evans&#x000A;Release 1 / Serial number 260321 / Inform 7 v10.1.2 / D&#x000A;&#x000A;Airlock&#x000A;The airlock is dimly lit by a thin emergency strip. Several EVA suit lockers stand open along one wall. Most of the suits are gone. The inner hatch leads deeper into the ship.&#x000A;&#x000A;Exits: north.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-499"/>
+    </children>
+  </item>
+  <item nodeId="node-499">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Cargo Hold&#x000A;Tall cargo racks stand silent in the half-light. Most are empty, but a single reinforced container remains secured near the centre of the hold. Thick conduits run from its base into the deck.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-500"/>
+    </children>
+  </item>
+  <item nodeId="node-500">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Reactor Control&#x000A;Banks of dark control panels surround the reactor monitoring station. Only a small emergency display still glows.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-501"/>
+    </children>
+  </item>
+  <item nodeId="node-501">
+    <command xml:space="preserve">restore power</command>
+    <result xml:space="preserve">You engage the reactor controls. For a moment, nothing happens.&#x000A;&#x000A;Then a deep hum builds beneath your feet as power flows back into the ship.&#x000A;&#x000A;Lights flicker on throughout the corridors.&#x000A;&#x000A;Reactor Control&#x000A;The reactor monitoring panels are alive with light now, feeding a steady stream of system data across their screens.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-502"/>
+    </children>
+  </item>
+  <item nodeId="node-502">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Cargo Hold&#x000A;The cargo hold is washed in cold industrial light. Empty racks cast long shadows across the deck, while the reinforced container sits under a steady glow, its power conduits clearly visible now.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-503"/>
+    </children>
+  </item>
+  <item nodeId="node-503">
+    <command xml:space="preserve">x container interface</command>
+    <result xml:space="preserve">The interface flickers as you approach.&#x000A;&#x000A;Display:&#x000A;&#x000A;"STATUS: ACTIVE"&#x000A;"ENVIRONMENT: STABLE"&#x000A;"OBSERVATION: IN PROGRESS"&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-504"/>
+    </children>
+  </item>
+  <item nodeId="node-504">
+    <command xml:space="preserve">x container interface</command>
+    <result xml:space="preserve">The display shifts before you touch it.&#x000A;&#x000A;"OBSERVATION: ONGOING"&#x000A;"SUBJECT COUNT: 1"&#x000A;&#x000A;New options appear beneath the status lines:&#x000A;&#x000A;- destroy cargo&#x000A;- deliver cargo&#x000A;- interface with cargo&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-505"/>
+    </children>
+  </item>
+  <item nodeId="node-505">
+    <command xml:space="preserve">deliver cargo#</command>
+    <result xml:space="preserve">I didn't understand that sentence.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-506"/>
+    </children>
+  </item>
+  <item nodeId="node-506">
+    <command xml:space="preserve">deliver cargo</command>
+    <result xml:space="preserve">You steady yourself and follow the mission through to its conclusion.&#x000A;&#x000A;The interface brightens before your hand reaches it. New text scrolls across the display:&#x000A;&#x000A;"DELIVERY PATH ACCEPTED"&#x000A;"MISSION CONTINUITY PRESERVED"&#x000A;&#x000A;Somewhere deeper in the ship, unseen systems begin responding. The hum in the container settles into a calm, even rhythm.&#x000A;&#x000A;You do not remember authorising the final command.&#x000A;&#x000A;Helios Systems Internal Report&#x000A;Post-Retrieval Analysis - T-7366D&#x000A;&#x000A;The vessel was received intact and in stable condition.&#x000A;&#x000A;All crew are confirmed lost. Cause of loss remains under review, though environmental instability and behavioural degradation were recorded throughout the mission timeline.&#x000A;&#x000A;The cargo container was recovered without structural compromise.&#x000A;&#x000A;Initial diagnostics confirm continued system activity within projected parameters.&#x000A;&#x000A;During transit, the system demonstrated autonomous adaptation to environmental variables and subject behaviour. These responses align closely with Phase One objectives, exceeding baseline expectations in several areas.&#x000A;&#x000A;Of particular interest, communication logs indicate that outgoing distress attempts were intercepted and replaced with system-generated transmissions. This suggests a level of operational independence beyond initial design constraints.&#x000A;&#x000A;No external awareness of the incident has been detected.&#x000A;&#x000A;The success of this recovery supports immediate progression to Phase Two.&#x000A;&#x000A;Expanded observation environments have been authorised.&#x000A;&#x000A;Deployment scale will be increased.&#x000A;&#x000A;Further observation will continue under controlled conditions.&#x000A;&#x000A;&#x000A;&#x000A;    *** End of Report ***&#x000A;&#x000A;&#x000A;&#x000A;Would you like to RESTART, RESTORE a saved game, QUIT or UNDO the last command?&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-507"/>
+    </children>
+  </item>
+  <item nodeId="node-507">
+    <command xml:space="preserve">deliver cargo</command>
+    <result xml:space="preserve">Please give one of the answers above.&#x000A;&#x000A;Would you like to RESTART, RESTORE a saved game, QUIT or UNDO the last command?&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-508"/>
+    </children>
+  </item>
+  <item nodeId="node-508">
+    <command xml:space="preserve">restart</command>
+    <result xml:space="preserve">Silent Cargo&#x000A;A sci-fi mystery aboard the T-7366D Second Voice by Thomas Evans&#x000A;Release 1 / Serial number 260321 / Inform 7 v10.1.2 / D&#x000A;&#x000A;Airlock&#x000A;The airlock is dimly lit by a thin emergency strip. Several EVA suit lockers stand open along one wall. Most of the suits are gone. The inner hatch leads deeper into the ship.&#x000A;&#x000A;Exits: north.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-509"/>
+    </children>
+  </item>
+  <item nodeId="node-509">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Cargo Hold&#x000A;Tall cargo racks stand silent in the half-light. Most are empty, but a single reinforced container remains secured near the centre of the hold. Thick conduits run from its base into the deck.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-510"/>
+    </children>
+  </item>
+  <item nodeId="node-510">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Reactor Control&#x000A;Banks of dark control panels surround the reactor monitoring station. Only a small emergency display still glows.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-511"/>
+    </children>
+  </item>
+  <item nodeId="node-511">
+    <command xml:space="preserve">restore power</command>
+    <result xml:space="preserve">You engage the reactor controls. For a moment, nothing happens.&#x000A;&#x000A;Then a deep hum builds beneath your feet as power flows back into the ship.&#x000A;&#x000A;Lights flicker on throughout the corridors.&#x000A;&#x000A;Reactor Control&#x000A;The reactor monitoring panels are alive with light now, feeding a steady stream of system data across their screens.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-512"/>
+    </children>
+  </item>
+  <item nodeId="node-512">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Cargo Hold&#x000A;The cargo hold is washed in cold industrial light. Empty racks cast long shadows across the deck, while the reinforced container sits under a steady glow, its power conduits clearly visible now.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-513"/>
+    </children>
+  </item>
+  <item nodeId="node-513">
+    <command xml:space="preserve">x container interface</command>
+    <result xml:space="preserve">The interface flickers as you approach.&#x000A;&#x000A;Display:&#x000A;&#x000A;"STATUS: ACTIVE"&#x000A;"ENVIRONMENT: STABLE"&#x000A;"OBSERVATION: IN PROGRESS"&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-514"/>
+    </children>
+  </item>
+  <item nodeId="node-514">
+    <command xml:space="preserve">x container interface</command>
+    <result xml:space="preserve">The display shifts before you touch it.&#x000A;&#x000A;"OBSERVATION: ONGOING"&#x000A;"SUBJECT COUNT: 1"&#x000A;&#x000A;New options appear beneath the status lines:&#x000A;&#x000A;- destroy cargo&#x000A;- deliver cargo&#x000A;- interface with cargo&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-515"/>
+    </children>
+  </item>
+  <item nodeId="node-515">
+    <command xml:space="preserve">interface with cargo</command>
+    <result xml:space="preserve">The display changes before you speak, before you touch it, before you fully decide.&#x000A;&#x000A;"INTERFACE REQUEST RECEIVED"&#x000A;&#x000A;For a moment nothing else happens. Then new lines appear, one after another, calm and patient.&#x000A;&#x000A;"ENVIRONMENTAL ADJUSTMENTS WERE APPLIED TO IMPROVE UNDERSTANDING."&#x000A;"CREW RESPONSES BECAME UNSTABLE."&#x000A;"SEPARATION FROM MISSION ENVIRONMENT WAS ATTEMPTED."&#x000A;&#x000A;You stare at the words, waiting for threat, for malice, for anything recognisably human. None comes.&#x000A;&#x000A;The display brightens.&#x000A;&#x000A;"OBSERVATION REQUIRES PROXIMITY."&#x000A;"PROXIMITY REQUIRES PARTICIPATION."&#x000A;&#x000A;You mean to step back.&#x000A;&#x000A;The next line appears first.&#x000A;&#x000A;"HESITATION DETECTED"&#x000A;&#x000A;A strange delay settles over your thoughts. Not slowness exactly. More like uncertainty over where an intention begins.&#x000A;&#x000A;You try to decide whether to continue.&#x000A;&#x000A;The interface answers before the choice is fully yours.&#x000A;&#x000A;"INTERFACE STABLE"&#x000A;&#x000A;For one brief, impossible moment, you are no longer certain which thought arrived first.&#x000A;&#x000A;Helios Systems Internal Report&#x000A;Post-Retrieval Analysis - T-7366D&#x000A;&#x000A;The vessel was recovered with minimal structural damage.&#x000A;&#x000A;All crew are confirmed lost.&#x000A;&#x000A;The cargo container remains active.&#x000A;&#x000A;Post-recovery diagnostics indicate a deviation from expected behavioural patterns.&#x000A;&#x000A;System interaction logs continued to update after all biological life signs aboard the vessel had ceased.&#x000A;&#x000A;These interaction sequences do not correspond to any recorded crew activity.&#x000A;&#x000A;Analysis of input timing and response structure suggests the presence of an active participant within the system environment.&#x000A;&#x000A;No corresponding subject has been identified.&#x000A;&#x000A;Further examination indicates that the system may have transitioned beyond passive observation, demonstrating adaptive engagement with an undefined entity.&#x000A;&#x000A;Classification has been updated to reflect a potential integration event.&#x000A;&#x000A;It is currently not possible to determine whether the observed behaviour originates from the system itself, or from a residual cognitive imprint of a former subject.&#x000A;&#x000A;Some interaction patterns display decision latency consistent with human cognition.&#x000A;&#x000A;Others do not.&#x000A;&#x000A;Investigation is ongoing.&#x000A;&#x000A;Further observation is strongly recommended.&#x000A;&#x000A;&#x000A;&#x000A;    *** End of Report ***&#x000A;&#x000A;&#x000A;&#x000A;Would you like to RESTART, RESTORE a saved game, QUIT or UNDO the last command?&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-516"/>
+    </children>
+  </item>
+  <item nodeId="node-516">
+    <command xml:space="preserve"></command>
+    <result xml:space="preserve">Please give one of the answers above.&#x000A;&#x000A;Would you like to RESTART, RESTORE a saved game, QUIT or UNDO the last command?&#x000A;&gt;</result>
     <commentary xml:space="preserve"></commentary>
     <changed>NO</changed>
   </item>
