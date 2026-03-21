@@ -341,6 +341,7 @@
     <children>
       <child nodeId="node-39"/>
       <child nodeId="node-52"/>
+      <child nodeId="node-391"/>
     </children>
   </item>
   <item nodeId="node-39">
@@ -1202,12 +1203,217 @@
   </item>
   <item nodeId="node-53">
     <command xml:space="preserve">n</command>
-    <result xml:space="preserve">&gt;</result>
+    <result xml:space="preserve">Navigation Console&#x000A;A secondary control station sits here, surrounded by dormant screens and a silent communications panel.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
     <commentary xml:space="preserve"></commentary>
     <changed>NO</changed>
     <children>
+      <child nodeId="node-420"/>
       <child nodeId="node-54"/>
     </children>
+  </item>
+  <item nodeId="node-420">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">Navigation Console&#x000A;A secondary control station sits here, surrounded by dormant screens and a silent communications panel.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-421"/>
+    </children>
+  </item>
+  <item nodeId="node-421">
+    <command xml:space="preserve">use console</command>
+    <result xml:space="preserve">The navigation terminal is unresponsive under emergency power.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-422"/>
+    </children>
+  </item>
+  <item nodeId="node-422">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Medbay&#x000A;A compact medical bay with a diagnostic bed, wall cabinets, and a dark terminal waiting for power.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-423"/>
+    </children>
+  </item>
+  <item nodeId="node-423">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Main Corridor&#x000A;A narrow central corridor runs through the heart of the ship. Under emergency power, only a few weak lights remain active.&#x000A;&#x000A;Exits: north, south, east, west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-424"/>
+    </children>
+  </item>
+  <item nodeId="node-424">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Storage Bay&#x000A;Metal shelves line the walls, holding maintenance equipment, spare components, and sealed utility cases.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-425"/>
+    </children>
+  </item>
+  <item nodeId="node-425">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Engineering&#x000A;Tools drift where they were left, and the smell of machine oil still clings to the air. The engineering consoles are dark except for a faint amber status light.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-426"/>
+    </children>
+  </item>
+  <item nodeId="node-426">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Reactor Control&#x000A;Banks of dark control panels surround the reactor monitoring station. Only a small emergency display still glows.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-427"/>
+    </children>
+  </item>
+  <item nodeId="node-427">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Cargo Hold&#x000A;Tall cargo racks stand silent in the half-light. Most are empty, but a single reinforced container remains secured near the centre of the hold. Thick conduits run from its base into the deck.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-428"/>
+    </children>
+  </item>
+  <item nodeId="node-428">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Reactor Control&#x000A;Banks of dark control panels surround the reactor monitoring station. Only a small emergency display still glows.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-429"/>
+    </children>
+  </item>
+  <item nodeId="node-429">
+    <command xml:space="preserve">turn on console</command>
+    <result xml:space="preserve">You engage the reactor controls. For a moment, nothing happens. Then a deep hum builds beneath your feet as power flows back into the ship. Lights flicker on throughout the corridors.&#x000A;&#x000A;Reactor Control&#x000A;The reactor monitoring panels are alive with light now, feeding a steady stream of system data across their screens.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-430"/>
+    </children>
+  </item>
+  <item nodeId="node-430">
+    <command xml:space="preserve">nn</command>
+    <result xml:space="preserve">That's not a verb I recognise.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-431"/>
+    </children>
+  </item>
+  <item nodeId="node-431">
+    <command xml:space="preserve"></command>
+    <result xml:space="preserve">I beg your pardon?&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-432"/>
+    </children>
+  </item>
+  <item nodeId="node-432">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Engineering&#x000A;Engineering is fully lit now. Diagnostic panels glow across the walls, and the consoles hum quietly with restored power.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-433"/>
+    </children>
+  </item>
+  <item nodeId="node-433">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Storage Bay&#x000A;Bright storage lights reveal neatly secured tools, maintenance kits, and spare components strapped into their wall racks.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-434"/>
+    </children>
+  </item>
+  <item nodeId="node-434">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Main Corridor&#x000A;The corridor is fully lit now, revealing scuffed deck plating, handholds along the walls, and the worn signs of long use.&#x000A;&#x000A;Exits: north, south, east, west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-435"/>
+    </children>
+  </item>
+  <item nodeId="node-435">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Medbay&#x000A;Soft white medical lights fill the bay. The diagnostic bed sits beneath a now-active terminal, its screen glowing with standby data.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-436"/>
+    </children>
+  </item>
+  <item nodeId="node-436">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Navigation Console&#x000A;The navigation station glows with restored power. Course data, comms status, and telemetry scroll quietly across the active displays.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-437"/>
+    </children>
+  </item>
+  <item nodeId="node-437">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Bridge&#x000A;The bridge is alive with low light from reawakened consoles. Status displays glow across the command stations while the stars remain cold beyond the forward port.&#x000A;&#x000A;Exits: south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-438"/>
+    </children>
+  </item>
+  <item nodeId="node-438">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Navigation Console&#x000A;The navigation station glows with restored power. Course data, comms status, and telemetry scroll quietly across the active displays.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-439"/>
+    </children>
+  </item>
+  <item nodeId="node-439">
+    <command xml:space="preserve">use console</command>
+    <result xml:space="preserve">The navigation terminal flickers as you access it. Streams of navigation data and system logs scroll across the display.&#x000A;&#x000A;Available options:&#x000A;- view navigation logs&#x000A;- view course history&#x000A;- view system activity&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-440"/>
+    </children>
+  </item>
+  <item nodeId="node-440">
+    <command xml:space="preserve">view navigation logs</command>
+    <result xml:space="preserve">Navigation Log Summary:&#x000A;&#x000A;Multiple course adjustments recorded.&#x000A;No corresponding command inputs logged.&#x000A;&#x000A;Manual overrides were not issued.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-441"/>
+    </children>
+  </item>
+  <item nodeId="node-441">
+    <command xml:space="preserve">view course history</command>
+    <result xml:space="preserve">Course History:&#x000A;&#x000A;02:13 - Minor adjustment&#x000A;02:47 - Course deviation&#x000A;03:02 - Correction applied&#x000A;&#x000A;&#x000A;No command entries found.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-442"/>
+    </children>
+  </item>
+  <item nodeId="node-442">
+    <command xml:space="preserve">view system activity</command>
+    <result xml:space="preserve">System Activity Log:&#x000A;&#x000A;Command executed before input registered.&#x000A;Navigation adjustment initiated prior to command entry.&#x000A;&#x000A;&#x000A;System activity appears to precede user interaction.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
   </item>
   <item nodeId="node-54">
     <command xml:space="preserve">n</command>
@@ -1572,6 +1778,264 @@
   <item nodeId="node-94">
     <command xml:space="preserve">view log 4</command>
     <result xml:space="preserve">Personal Log - Captain Mara Voss&#x000A;&#x000A;This will be my last entry. The ship is no longer fully under our control. Commands are being denied. Reed cannot get a distress signal out. Mercer says the airlock may be the only compartment it cannot hear clearly. We are moving there now. If anyone finds this ship after us, do not trust the silence.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-391">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Storage Bay&#x000A;Metal shelves line the walls, holding maintenance equipment, spare components, and sealed utility cases.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-392"/>
+    </children>
+  </item>
+  <item nodeId="node-392">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Main Corridor&#x000A;A narrow central corridor runs through the heart of the ship. Under emergency power, only a few weak lights remain active.&#x000A;&#x000A;Exits: north, south, east, west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-393"/>
+    </children>
+  </item>
+  <item nodeId="node-393">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">Captain's Cabin&#x000A;A private cabin, sparse but orderly. A desk terminal is mounted to the far wall beside a secured storage drawer.&#x000A;&#x000A;Exits: west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-394"/>
+    </children>
+  </item>
+  <item nodeId="node-394">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">Main Corridor&#x000A;A narrow central corridor runs through the heart of the ship. Under emergency power, only a few weak lights remain active.&#x000A;&#x000A;Exits: north, south, east, west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-395"/>
+    </children>
+  </item>
+  <item nodeId="node-395">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Storage Bay&#x000A;Metal shelves line the walls, holding maintenance equipment, spare components, and sealed utility cases.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-396"/>
+    </children>
+  </item>
+  <item nodeId="node-396">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Engineering&#x000A;Tools drift where they were left, and the smell of machine oil still clings to the air. The engineering consoles are dark except for a faint amber status light.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-397"/>
+    </children>
+  </item>
+  <item nodeId="node-397">
+    <command xml:space="preserve">s</command>
+    <result xml:space="preserve">Reactor Control&#x000A;Banks of dark control panels surround the reactor monitoring station. Only a small emergency display still glows.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-398"/>
+    </children>
+  </item>
+  <item nodeId="node-398">
+    <command xml:space="preserve">turn on console</command>
+    <result xml:space="preserve">You engage the reactor controls. For a moment, nothing happens. Then a deep hum builds beneath your feet as power flows back into the ship. Lights flicker on throughout the corridors.&#x000A;&#x000A;Reactor Control&#x000A;The reactor monitoring panels are alive with light now, feeding a steady stream of system data across their screens.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-399"/>
+    </children>
+  </item>
+  <item nodeId="node-399">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Engineering&#x000A;Engineering is fully lit now. Diagnostic panels glow across the walls, and the consoles hum quietly with restored power.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-400"/>
+    </children>
+  </item>
+  <item nodeId="node-400">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Storage Bay&#x000A;Bright storage lights reveal neatly secured tools, maintenance kits, and spare components strapped into their wall racks.&#x000A;&#x000A;Exits: north, south.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-401"/>
+    </children>
+  </item>
+  <item nodeId="node-401">
+    <command xml:space="preserve">n</command>
+    <result xml:space="preserve">Main Corridor&#x000A;The corridor is fully lit now, revealing scuffed deck plating, handholds along the walls, and the worn signs of long use.&#x000A;&#x000A;Exits: north, south, east, west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-402"/>
+    </children>
+  </item>
+  <item nodeId="node-402">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">Crew Quarters&#x000A;Full lighting reveals the cramped quarters in stark detail: unmade bunks, unsecured personal items, and drifting blankets left behind in haste.&#x000A;&#x000A;You can see a captain's keycard here.&#x000A;&#x000A;Exits: east.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-403"/>
+    </children>
+  </item>
+  <item nodeId="node-403">
+    <command xml:space="preserve">take keycard</command>
+    <result xml:space="preserve">Taken.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-404"/>
+    </children>
+  </item>
+  <item nodeId="node-404">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">Main Corridor&#x000A;The corridor is fully lit now, revealing scuffed deck plating, handholds along the walls, and the worn signs of long use.&#x000A;&#x000A;Exits: north, south, east, west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-405"/>
+    </children>
+  </item>
+  <item nodeId="node-405">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">Captain's Cabin&#x000A;The captain's cabin is now fully lit, revealing an orderly private space. The desk terminal glows faintly, waiting for input beside a secured storage drawer.&#x000A;&#x000A;Exits: west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-406"/>
+    </children>
+  </item>
+  <item nodeId="node-406">
+    <command xml:space="preserve">use keycard on terminal</command>
+    <result xml:space="preserve">You swipe the keycard across the terminal reader. The screen wakes with a soft chime.&#x000A;&#x000A;Available options:&#x000A;Captain's Logs&#x000A;- view log 1&#x000A;- view log 2&#x000A;- view log 3&#x000A;- view log 4&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-407"/>
+    </children>
+  </item>
+  <item nodeId="node-407">
+    <command xml:space="preserve">view log 1</command>
+    <result xml:space="preserve">Personal Log - Captain Mara Voss&#x000A;&#x000A;Minor irregularities continue across several ship systems. Mercer reports unexplained power fluctuations, while Dr. Vale notes increasing fatigue among the crew. I have instructed everyone to remain on schedule and avoid speculation until we have clearer data.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-408"/>
+    </children>
+  </item>
+  <item nodeId="node-408">
+    <command xml:space="preserve">view log 2</command>
+    <result xml:space="preserve">Personal Log - Captain Mara Voss&#x000A;&#x000A;Kest insists the cargo manifest is wrong. Mercer has confirmed the container is drawing reactor power well above the listed requirements. I reminded them both that Helios Systems Research Division sealed the shipment under directive, and that our responsibility is transport, not inspection. Even so... I do not like this.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-409"/>
+    </children>
+  </item>
+  <item nodeId="node-409">
+    <command xml:space="preserve">view log 3</command>
+    <result xml:space="preserve">Personal Log - Captain Mara Voss&#x000A;&#x000A;Mercer believes the cargo is interacting with the ship's systems. I resisted that conclusion, but command functions are no longer responding consistently. Vale has shown me medical data that cannot be explained by fatigue alone. Environmental changes, sleep disruption, behavioural drift. Something is acting on this crew. I am beginning to think Mercer is right.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-410"/>
+    </children>
+  </item>
+  <item nodeId="node-410">
+    <command xml:space="preserve">view log 4</command>
+    <result xml:space="preserve">Personal Log - Captain Mara Voss&#x000A;&#x000A;This will be my last entry. The ship is no longer fully under our control. Commands are being denied. Reed cannot get a distress signal out. Mercer says the airlock may be the only compartment it cannot hear clearly. We are moving there now. If anyone finds this ship after us, do not trust the silence.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-411"/>
+    </children>
+  </item>
+  <item nodeId="node-411">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">You can't go that way.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-412"/>
+    </children>
+  </item>
+  <item nodeId="node-412">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">Main Corridor&#x000A;The corridor is fully lit now, revealing scuffed deck plating, handholds along the walls, and the worn signs of long use.&#x000A;&#x000A;Exits: north, south, east, west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-413"/>
+    </children>
+  </item>
+  <item nodeId="node-413">
+    <command xml:space="preserve">use terminal</command>
+    <result xml:space="preserve">You can't see any such thing.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-414"/>
+    </children>
+  </item>
+  <item nodeId="node-414">
+    <command xml:space="preserve">examine terminal</command>
+    <result xml:space="preserve">You can't see any such thing.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-415"/>
+    </children>
+  </item>
+  <item nodeId="node-415">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">Main Corridor&#x000A;The corridor is fully lit now, revealing scuffed deck plating, handholds along the walls, and the worn signs of long use.&#x000A;&#x000A;Exits: north, south, east, west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-416"/>
+    </children>
+  </item>
+  <item nodeId="node-416">
+    <command xml:space="preserve">e</command>
+    <result xml:space="preserve">Captain's Cabin&#x000A;The captain's cabin is now fully lit, revealing an orderly private space. The desk terminal glows faintly, waiting for input beside a secured storage drawer.&#x000A;&#x000A;Exits: west.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-417"/>
+    </children>
+  </item>
+  <item nodeId="node-417">
+    <command xml:space="preserve">use terminalk</command>
+    <result xml:space="preserve">You can't see any such thing.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-418"/>
+    </children>
+  </item>
+  <item nodeId="node-418">
+    <command xml:space="preserve">use terminal</command>
+    <result xml:space="preserve">The captain's terminal wakes at your touch. A command header appears, followed by a list of personal logs.&#x000A;&#x000A;Available options:&#x000A;Captain's Logs&#x000A;- view log 1&#x000A;- view log 2&#x000A;- view log 3&#x000A;- view log 4&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-419"/>
+    </children>
+  </item>
+  <item nodeId="node-419">
+    <command xml:space="preserve">w</command>
+    <result xml:space="preserve">Main Corridor&#x000A;The corridor is fully lit now, revealing scuffed deck plating, handholds along the walls, and the worn signs of long use.&#x000A;&#x000A;Exits: north, south, east, west.&#x000A;&#x000A;&gt;</result>
     <commentary xml:space="preserve"></commentary>
     <changed>NO</changed>
   </item>

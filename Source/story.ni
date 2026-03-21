@@ -17,6 +17,7 @@ A thing can be accessed or unaccessed. A thing is usually unaccessed.
 Captain logs reviewed is a truth state that varies. Captain logs reviewed is false.
 A thing can be locked or unlocked. A thing is usually unlocked.
 A thing can be secured or unsecured. A thing is usually unsecured.
+Navigation logs reviewed is a truth state that varies. Navigation logs reviewed is false.
 
 Part 2 - Rooms
 
@@ -82,6 +83,9 @@ The description is "A private command terminal set into the captain's desk. The 
 The navigation panels are scenery in the Navigation Console.
 The description is "Dark navigation panels surround the console, their displays inactive under emergency power."
 
+The navigation terminal is scenery in the Navigation Console. It is Unaccessed.
+The description is "A navigation control station with multiple active displays. Course data and telemetry scroll across the screen."
+
 The comms array is scenery in the Navigation Console.
 The description is "A communications panel used to transmit long-range signals. It appears offline."
 
@@ -134,6 +138,19 @@ Swiping it on is an action applying to two things.
 Understand "use [something] on [something]" as swiping it on.
 Understand "swipe [something] on [something]" as swiping it on.
 Understand "swipe [something] over [something]" as swiping it on.
+
+Viewing navigation logs is an action applying to nothing.
+Viewing course history is an action applying to nothing.
+Viewing system activity is an action applying to nothing.
+
+Understand "view navigation logs" as viewing navigation logs.
+Understand "view logs" as viewing navigation logs.
+Understand "view course history" as viewing course history.
+Understand "view system activity" as viewing system activity.
+
+Understand "console" as the navigation terminal.
+Understand "navigation console" as the navigation terminal.
+Understand "nav console" as the navigation terminal.
 
 Instead of swiping something on something:
 	say "That doesn't seem to achieve anything."
@@ -338,6 +355,85 @@ After going from the Captain's Cabin:
 	now the captain's terminal is unaccessed;
 	now Captain logs reviewed is false;
 	continue the action.
+	
+Instead of using the navigation terminal:
+	try examining the navigation terminal.
+	
+Instead of examining the navigation terminal:
+	if ship-power is false:
+		say "The navigation terminal is unresponsive under emergency power.";
+	otherwise:
+		now the navigation terminal is accessed;
+		say "The navigation terminal flickers as you access it. Streams of navigation data and system logs scroll across the display.[paragraph break]";
+		say "Available options:[line break]";
+		say "- view navigation logs[line break]";
+		say "- view course history[line break]";
+		say "- view system activity";
+		
+Instead of viewing navigation logs:
+	if the location is not the Navigation Console:
+		say "You need to be at the navigation console to do that.";
+	otherwise if ship-power is false:
+		say "The navigation console is still without full power.";
+	otherwise if the navigation terminal is unaccessed:
+		say "You need to access the navigation console first.";
+	otherwise:
+		now Navigation logs reviewed is true;
+		say "Navigation Log Summary:[paragraph break]";
+		say "Multiple course adjustments recorded.[line break]";
+		say "Manual overrides were not issued.[line break]";
+		say "No command inputs logged.[paragraph break]";
+		say "System reports navigation stability within acceptable parameters.";
+		
+Instead of viewing course history:
+	if the location is not the Navigation Console:
+		say "You need to be at the navigation console to do that.";
+	otherwise if ship-power is false:
+		say "The navigation console is still without full power.";
+	otherwise if the navigation terminal is unaccessed:
+		say "You need to access the navigation console first.";
+	otherwise:
+		say "Course History:[paragraph break]";
+		say "02:13 — Minor adjustment[line break]";
+		say "02:47 — Course deviation[line break]";
+		say "03:02 — Correction applied[line break]";
+		say "03:02 — Correction applied[line break]";
+		say "03:02 — Correction applied[line break]";
+		say "[paragraph break]Duplicate entries detected.";
+		say "[line break]No command inputs recorded.";
+
+Instead of viewing system activity:
+	if the location is not the Navigation Console:
+		say "You need to be at the navigation console to do that.";
+	otherwise if ship-power is false:
+		say "The navigation console is still without full power.";
+	otherwise if the navigation terminal is unaccessed:
+		say "You need to access the navigation console first.";
+	otherwise if Navigation logs reviewed is false:
+		say "You should review the navigation logs first.";
+	otherwise:
+		say "System Activity Log:[paragraph break]";
+		say "Command registered: Adjust course[line break]";
+		say "Timestamp: 02:13[line break]";
+		say "Command input: NONE[line break]";
+		say "[paragraph break]";
+		say "Command registered: Correction[line break]";
+		say "Timestamp: 02:47[line break]";
+		say "Command input: NONE[line break]";
+		say "[paragraph break]";
+		say "Command registered: Correction[line break]";
+		say "Timestamp: 03:02[line break]";
+		say "Command input: NONE[line break]";
+		say "[paragraph break]";
+		say "System note: Command execution precedes input buffer.";
+
+After going to a room from the Navigation Console:
+	now the navigation terminal is unaccessed;
+	now Navigation logs reviewed is false;
+	continue the action.
+	
+After examining the navigation terminal when Navigation logs reviewed is true:
+	say "[paragraph break]One of the displays flickers briefly, as if refreshing ahead of your input."
 
 After looking:
 	say "Exits: ";
