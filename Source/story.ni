@@ -18,6 +18,9 @@ Captain logs reviewed is a truth state that varies. Captain logs reviewed is fal
 A thing can be locked or unlocked. A thing is usually unlocked.
 A thing can be secured or unsecured. A thing is usually unsecured.
 Navigation logs reviewed is a truth state that varies. Navigation logs reviewed is false.
+Comms logs reviewed is a truth state that varies. Comms logs reviewed is false.
+Airlock-attempted is a truth state that varies. Airlock-attempted is false.
+Container examined is a truth state that varies. Container examined is false.
 
 Part 2 - Rooms
 
@@ -62,14 +65,25 @@ The description of the Bridge is "[if ship-power is false]The command bridge is 
 
 Part 3 - Scenery and Interactive Objects
 
+The outer airlock door is scenery in the Airlock.
+Understand "door" or "outer door" or "airlock door" as the outer airlock door.
+The description is "The outer hatch leading into open space. It is sealed."
+
 The EVA suit lockers are scenery in the Airlock.
-The description is "A row of emergency EVA suit lockers is built into the wall. Most of them hang open and empty. Whatever happened here, the crew took the suits with them."
+The description is "A row of emergency EVA suit lockers lines the wall. Most hang open and empty. A few remain sealed, untouched."
+
+The scratched warning is scenery in the Airlock.
+The description is "The words are carved deep into the metal, uneven and hurried: 'DON'T LET IT HEAR YOU'. The grooves are jagged, as if cut with whatever tool was available."
 
 The reinforced container is scenery in the Cargo Hold.
-The description is "A heavy cargo container, bolted to the deck and wired into the ship through thick power conduits. Its surface is marked with a faded Helios Systems Research Division seal."
+The description is "[if ship-power is false]A heavy cargo container, bolted to the deck and wired into the ship through thick power conduits. It is silent and inert in the low light.[otherwise]The container hums faintly. Thick power conduits feed into its base, pulsing with a steady rhythm. A small interface panel glows softly on its side.[end if]"
+
+The container interface is scenery in the Cargo Hold.
+Understand "panel" or "interface" or "control panel" as the container interface.
+The description is "A small embedded interface with a minimal display. No markings indicate its function."
 
 The reactor console is scenery in the Reactor Control.
-The description is "The main reactor control console. Most systems are offline, but manual controls are still accessible."
+The description is "The reactor control console is still partially active. Manual startup procedures are available. You may be able to restore power from here."
 
 The engineering console is scenery in the Engineering.
 The description is "A dark control console with a few faint amber indicators still glowing under emergency power."
@@ -95,11 +109,22 @@ The description is "The main command console of the ship. It is currently unpowe
 The viewscreen is scenery in the Bridge.
 The description is "Through the forward viewing port, the stars hang cold and motionless."
 
+The comms terminal is scenery in the Bridge. It is unaccessed.
+The description is "A communications terminal linked to the ship's long-range transmitters. Its display glows faintly with restored power."
+
 The captain's keycard is in the Crew Quarters.
 The captain's keycard is portable.
 The description is "A slim access card marked with Captain Mara Voss's clearance seal."
 
 Part 4 - Rules and Interactions
+
+Restoring power is an action applying to nothing.
+
+Understand "restore power" as restoring power.
+Understand "start reactor" as restoring power.
+Understand "restart reactor" as restoring power.
+Understand "activate reactor" as restoring power.
+Understand "power up reactor" as restoring power.
 
 Viewing crew status is an action applying to nothing.
 Viewing sleep data is an action applying to nothing.
@@ -152,19 +177,101 @@ Understand "console" as the navigation terminal.
 Understand "navigation console" as the navigation terminal.
 Understand "nav console" as the navigation terminal.
 
+Viewing transmission log is an action applying to nothing.
+Viewing outgoing messages is an action applying to nothing.
+Viewing system response is an action applying to nothing.
+
+Understand "view transmission log" as viewing transmission log.
+Understand "view outgoing messages" as viewing outgoing messages.
+Understand "view messages" as viewing outgoing messages.
+Understand "view system response" as viewing system response.
+
+Before examining the scratched warning:
+	if ship-power is false:
+		say "You can't make anything out in the darkness." instead.
+		
+Before examining the container interface:
+	if ship-power is false:
+		say "The interface is dark and unresponsive." instead.
+		
+Instead of examining the scratched warning:
+	if ship-power is false:
+		say "You can't make anything out in the darkness.";
+	otherwise:
+		say "The words are carved deep into the metal:[paragraph break]";
+		say "'DON'T LET IT HEAR YOU'[paragraph break]";
+		say "The cuts are uneven. Desperate.[paragraph break]";
+		say "Someone took the time to leave this behind.";
+		
+Instead of opening the outer airlock door:
+	if ship-power is false:
+		say "The door control is unresponsive.";
+	otherwise if Airlock-attempted is false:
+		now Airlock-attempted is true;
+		say "You reach for the control. For a moment, nothing happens.[paragraph break]";
+		say "Then the system responds:";
+		say "[paragraph break]'Access denied.'[paragraph break]";
+		say "The message appears before your hand touches the panel.";
+	otherwise:
+		say "You move toward the control again.[paragraph break]";
+		say "The display activates immediately:";
+		say "[paragraph break]'Access denied.'[paragraph break]";
+		say "It was waiting this time.";
+		
+Instead of examining the EVA suit lockers:
+	say "The lockers stand open, their contents removed in a hurry. Enough suits are missing for the entire crew.[paragraph break]They didn't leave anything behind.";
+	
+Instead of restoring power:
+	if the location is not the Reactor Control:
+		say "You need to be at the reactor controls to do that.";
+	otherwise if ship-power is true:
+		say "The reactor is already running at full power.";
+	otherwise:
+		now ship-power is true;
+		say "You engage the reactor controls. For a moment, nothing happens.[paragraph break]";
+		say "Then a deep hum builds beneath your feet as power flows back into the ship.[paragraph break]";
+		say "Lights flicker on throughout the corridors.[paragraph break]";
+		try looking;
+
 Instead of swiping something on something:
 	say "That doesn't seem to achieve anything."
 
+Instead of examining the container interface:
+	if ship-power is false:
+		say "The interface is dark and unresponsive.";
+	otherwise if Container examined is false:
+		now Container examined is true;
+		say "The interface flickers as you approach.[paragraph break]";
+		say "Display:[paragraph break]";
+		say "'STATUS: ACTIVE'[line break]";
+		say "'ENVIRONMENT: STABLE'[line break]";
+		say "'OBSERVATION: IN PROGRESS'";
+	otherwise:
+		say "The display shifts before you touch it.[paragraph break]";
+		say "'OBSERVATION: ONGOING'[line break]";
+		say "'SUBJECT COUNT: 1'";
+
+Instead of touching the container interface:
+	if ship-power is false:
+		say "The interface is inactive.";
+	otherwise:
+		say "The display reacts instantly.[paragraph break]";
+		say "'INPUT REGISTERED BEFORE CONTACT'";
+
 Instead of opening the reinforced container:
 	say "The reinforced container is locked down by heavy clamps.";
+
+After examining the reinforced container when ship-power is true:
+	say "[paragraph break]The faint hum seems to fluctuate, just slightly."
+
+Instead of examining the reactor console:
+	if ship-power is false:
+		say "The reactor control console is still partially active. Manual startup procedures are available.";
+	otherwise:
+		say "The reactor console is alive with data, monitoring the ship's systems."
 	
 Instead of switching on the reactor console:
-	if ship-power is false:
-		now ship-power is true;
-		say "You engage the reactor controls. For a moment, nothing happens. Then a deep hum builds beneath your feet as power flows back into the ship. Lights flicker on throughout the corridors.[paragraph break]";
-		try looking;
-	otherwise:
-		say "The reactor is already running at full power."
+	try restoring power.
 
 Instead of switching on the engineering console:
 	if ship-power is false:
@@ -434,7 +541,74 @@ After going to a room from the Navigation Console:
 	
 After examining the navigation terminal when Navigation logs reviewed is true:
 	say "[paragraph break]One of the displays flickers briefly, as if refreshing ahead of your input."
-
+	
+Instead of using the comms terminal:
+	try examining the comms terminal.
+	
+Instead of examining the comms terminal:
+	if ship-power is false:
+		say "The communications terminal is dark and inactive.";
+	otherwise:
+		now the comms terminal is accessed;
+		say "The communications terminal activates. A transmission log appears on the screen.[paragraph break]";
+		say "Available options:[line break]";
+		say "- view transmission log[line break]";
+		say "- view outgoing messages[line break]";
+		say "- view system response";
+		
+Instead of viewing transmission log:
+	if the location is not the Bridge:
+		say "You need to be at the communications terminal to do that.";
+	otherwise if ship-power is false:
+		say "The communications terminal is still offline.";
+	otherwise if the comms terminal is unaccessed:
+		say "You need to access the communications terminal first.";
+	otherwise:
+		now Comms logs reviewed is true;
+		say "Transmission Log:[paragraph break]";
+		say "Outgoing distress signal — FAILED[line break]";
+		say "Outgoing distress signal — FAILED[line break]";
+		say "Outgoing distress signal — FAILED[line break]";
+		say "[paragraph break]No successful transmissions recorded.";
+		
+Instead of viewing outgoing messages:
+	if the location is not the Bridge:
+		say "You need to be at the communications terminal to do that.";
+	otherwise if ship-power is false:
+		say "The communications terminal is still offline.";
+	otherwise if the comms terminal is unaccessed:
+		say "You need to access the communications terminal first.";
+	otherwise:
+		say "Outgoing Messages:[paragraph break]";
+		say "Draft message:[line break]";
+		say "'Distress signal. Systems compromised. Request immediate assistance.'[paragraph break]";
+		say "Status: NOT SENT[line break]";
+		say "[paragraph break]";
+		say "Second draft:[line break]";
+		say "'Navigation unstable. Crew experiencing irregular conditions.'[paragraph break]";
+		say "Status: NOT SENT";
+		
+Instead of viewing system response:
+	if the location is not the Bridge:
+		say "You need to be at the communications terminal to do that.";
+	otherwise if ship-power is false:
+		say "The communications terminal is still offline.";
+	otherwise if the comms terminal is unaccessed:
+		say "You need to access the communications terminal first.";
+	otherwise if Comms logs reviewed is false:
+		say "You should review the transmission log first.";
+	otherwise:
+		say "System Response Log:[paragraph break]";
+		say "Outgoing transmission intercepted.[line break]";
+		say "Replacement message generated.[paragraph break]";
+		say "Message sent:[line break]";
+		say "'System functioning normally.'";
+		
+After going to a room from the Bridge:
+	now the comms terminal is unaccessed;
+	now Comms logs reviewed is false;
+	continue the action.
+	
 After looking:
 	say "Exits: ";
 	let first be true;
