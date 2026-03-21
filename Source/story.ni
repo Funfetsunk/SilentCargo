@@ -109,6 +109,14 @@ Using is an action applying to one thing.
 Understand "use [something]" as using.
 Understand "access [something]" as using.
 
+Understand "captain terminal" as captain's terminal.
+Understand "captain's terminal" as captain's terminal.
+Understand "captains terminal" as captain's terminal.
+
+Understand "med terminal" as medbay terminal.
+Understand "medical terminal" as medbay terminal.
+understand "medbay terminal" as medbay terminal.
+
 Viewing captain logs is an action applying to nothing.
 Viewing captain log 1 is an action applying to nothing.
 Viewing captain log 2 is an action applying to nothing.
@@ -122,12 +130,13 @@ Understand "view log 2" as viewing captain log 2.
 Understand "view log 3" as viewing captain log 3.
 Understand "view log 4" as viewing captain log 4.
 
-Understand "use [something] on [something]" as unlocking it with.
-Understand "swipe [something] on [something]" as unlocking it with.
-Understand "use [something] with [something]" as unlocking it with.
+Swiping it on is an action applying to two things.
+Understand "use [something] on [something]" as swiping it on.
+Understand "swipe [something] on [something]" as swiping it on.
+Understand "swipe [something] over [something]" as swiping it on.
 
-Instead of unlocking something with something:
-	say "That doesn't seem to work."
+Instead of swiping something on something:
+	say "That doesn't seem to achieve anything."
 
 Instead of opening the reinforced container:
 	say "The reinforced container is locked down by heavy clamps.";
@@ -207,8 +216,9 @@ Instead of viewing diagnostic data:
 		
 After going from the Medbay:
 	now the medbay terminal is unaccessed;
-	now sleep data reviewed is false.
-		
+	now sleep data reviewed is false;
+	continue the action.
+			
 Instead of switching on the medbay terminal:
 	if ship-power is false:
 		say "The terminal gives a weak pulse of light, then settles back into standby mode.";
@@ -230,7 +240,7 @@ Instead of examining the captain's terminal:
 		now the captain's terminal is accessed;
 		say "The captain's terminal wakes at your touch. A command header appears, followed by a list of personal logs.[paragraph break]";
 		say "Available options:[line break]";
-		say "- view captain logs[line break]";
+		say "Captain's Logs[line break]";
 		say "- view log 1[line break]";
 		say "- view log 2[line break]";
 		say "- view log 3[line break]";
@@ -239,7 +249,7 @@ Instead of examining the captain's terminal:
 Instead of using the captain's terminal:
 	try examining the captain's terminal.
 	
-Instead of unlocking the captain's terminal with the captain's keycard:
+Instead of swiping the captain's keycard on the captain's terminal:
 	if ship-power is false:
 		say "The terminal is still without full power.";
 	otherwise if the player does not carry the captain's keycard:
@@ -249,11 +259,13 @@ Instead of unlocking the captain's terminal with the captain's keycard:
 		now the captain's terminal is accessed;
 		say "You swipe the keycard across the terminal reader. The screen wakes with a soft chime.[paragraph break]";
 		say "Available options:[line break]";
-		say "- view captain logs[line break]";
+		say "Captain's Logs[line break]";
 		say "- view log 1[line break]";
 		say "- view log 2[line break]";
 		say "- view log 3[line break]";
 		say "- view log 4";
+		
+
 	
 Instead of examining the captain's terminal:
 	if ship-power is false:
@@ -264,7 +276,7 @@ Instead of examining the captain's terminal:
 		now the captain's terminal is accessed;
 		say "The captain's terminal wakes at your touch. A command header appears, followed by a list of personal logs.[paragraph break]";
 		say "Available options:[line break]";
-		say "- view captain logs[line break]";
+		say "Captain's Logs[line break]";
 		say "- view log 1[line break]";
 		say "- view log 2[line break]";
 		say "- view log 3[line break]";
@@ -324,7 +336,8 @@ Instead of viewing captain log 4:
 
 After going from the Captain's Cabin:
 	now the captain's terminal is unaccessed;
-	now Captain logs reviewed is false.
+	now Captain logs reviewed is false;
+	continue the action.
 
 After looking:
 	say "Exits: ";
