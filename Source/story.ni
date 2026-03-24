@@ -97,6 +97,23 @@ The description is "A dark control console with a few faint amber indicators sti
 The medbay terminal is scenery in the Medbay. It is unaccessed.
 The description is "A compact medical terminal mounted beside the diagnostic bed. Its screen is dark, but a standby light pulses faintly."
 
+[-----Crew Quarters Objects-----]
+
+A crew bunk is scenery in the Crew Quarters.
+Understand "bunk" or "bed" or "beds" as the crew bunk.
+The description is "One of several narrow bunks fixed to the wall. The restraints are still clipped in place, but the bedding floats loose, as if whoever slept here left in a hurry."
+
+Captain Voss's bunk is scenery in the Crew Quarters.
+Understand "voss bunk" or "captain bunk" as Captain Voss's bunk.
+The description is "Unlike the others, this bunk is neatly secured. The blanket is fastened down. A small personal datapad is clipped to the side rail."
+
+The crew locker is scenery in the Crew Quarters.
+Understand "locker" or "lockers" or "personal locker" as the crew locker.
+The description is "Small personal lockers line the wall. Most stand open. Inside: clothing, personal effects, and a few unsecured items drifting gently in the air."
+
+The personal datapad is scenery in the Crew Quarters.
+Understand "datapad" or "pad" or "device" as the personal datapad.
+
 [-----Captain's Cabin Objects-----]
 The captain's terminal is scenery in the Captain's Cabin. It is unaccessed. It is secured.
 The description is "A private command terminal set into the captain's desk. The screen is dark, awaiting input."
@@ -167,6 +184,17 @@ understand "medbay terminal" as medbay terminal.
 
 [-----Captain's Terminal Actions-----]
 Understand "view captain logs" as viewing captain logs.
+
+Understand "use [something] on [something]" as swiping it on.
+Understand "swipe [something] on [something]" as swiping it on.
+Understand "swipe [something] over [something]" as swiping it on.
+
+Inserting the keycard is an action applying to nothing.
+
+Understand "insert keycard" as inserting the keycard.
+Understand "insert captain's keycard" as inserting the keycard.
+Understand "insert captains keycard" as inserting the keycard.
+
 [-----Understand "view logs" as viewing captain logs.-----]
 Understand "view log 1" as viewing captain log 1.
 Understand "view log 2" as viewing captain log 2.
@@ -213,10 +241,6 @@ Understand "interface with the container" as interfacing with the cargo.
 Understand "use [something]" as using.
 Understand "access [something]" as using.
 
-Understand "use [something] on [something]" as swiping it on.
-Understand "swipe [something] on [something]" as swiping it on.
-Understand "swipe [something] over [something]" as swiping it on.
-
 [-----Ending-----]
 Continuing is an action applying to nothing.
 
@@ -225,8 +249,15 @@ Understand "next" as continuing.
 Understand "proceed" as continuing.
 
 [-----Core Game Rules-----]
-[-----Intro-----]
+[-----Version Information-----]
 Rule for printing the banner text:
+	say "[bold type]Silent Cargo[roman type][line break]";
+	say "Version 0.5[line break]";
+	say "A sci-fi mystery aboard the T-7366D Second Voice[line break]";
+	say "By Thomas Evans[paragraph break]";
+[-----Intro-----]
+
+When play begins:
 	say "[bold type]Helios Systems — Recovery Assignment[roman type][paragraph break]";
 	say "Vessel ID: T-7366D[paragraph break]";
 	say "Status: Missing[paragraph break]";
@@ -381,7 +412,8 @@ Instead of examining the medbay terminal:
 		say "The terminal is dark and unresponsive under emergency power.";
 	otherwise:
 		now the medbay terminal is accessed;
-		say "The terminal flickers to life as you access it. Medical data scrolls across the screen.[paragraph break]";
+		say "The screen flickers to life before your hand touches it.[paragraph break]";
+		say "Medical data scrolls across the display.[paragraph break]";
 		say "Available options:[line break]";
 		say "- view crew status[line break]";
 		say "- view sleep data[if sleep data reviewed is true][line break]- view diagnostic data[end if]";
@@ -445,7 +477,16 @@ After going from the Medbay:
 	now sleep data reviewed is false;
 	continue the action.
 
-		
+[-----Crew Quaters Datapad Rules-----]
+Instead of examining the personal datapad:
+	say "The screen flickers as you bring it into view.[paragraph break]";
+	say "Personal Note — Captain Mara Voss[paragraph break]";
+	say "'Sleep is getting worse. Not just disruption — it feels directed. Like something is waiting for us to stop thinking clearly.'[paragraph break]";
+	say "'Crew discipline is slipping. Not through disobedience — through hesitation. Delays. Second-guessing simple actions.'[paragraph break]";
+	say "'I have ordered full adherence to routine. It is the only thing keeping us functional.'[paragraph break]";
+	say "[paragraph break]";
+	say "The entry ends abruptly.";
+
 [-----Captain's Terminal Access Rules-----]
 Instead of using the captain's terminal:
 	try examining the captain's terminal.
@@ -473,8 +514,33 @@ Instead of examining the captain's terminal:
 		
 Instead of swiping something on something:
 	say "That doesn't seem to achieve anything."
+	
+Rule for supplying a missing second noun while inserting the captain's keycard into:
+	if the location is the Captain's Cabin:
+		now the second noun is the captain's terminal.
+
+Instead of inserting the captain's keycard into the captain's terminal:
+	say "You run the keycard along the terminal's reader.";
+	try swiping the captain's keycard on the captain's terminal.
+		
+Instead of using the captain's keycard:
+	if the location is the Captain's Cabin:
+		try swiping the captain's keycard on the captain's terminal;
+	otherwise:
+		say "You need something to use the keycard on.";
 
 [-----Captain's Terminal Keycard Rules-----]
+Instead of inserting the keycard:
+	if the location is the Captain's Cabin:
+		say "You bring the keycard to the terminal's reader.";
+		try swiping the captain's keycard on the captain's terminal;
+	otherwise:
+		say "There's nowhere here to insert the keycard.";
+		
+Instead of inserting the captain's keycard into the captain's terminal:
+	say "You bring the keycard to the terminal's reader.";
+	try swiping the captain's keycard on the captain's terminal.
+	
 Instead of swiping the captain's keycard on the captain's terminal:
 	if ship-power is false:
 		say "The terminal is still without full power.";
@@ -628,6 +694,7 @@ Instead of viewing system activity:
 		say "Command input: NONE[line break]";
 		say "[paragraph break]";
 		say "System note: Command execution precedes input buffer.";
+		say "[paragraph break]Timestamp mismatch detected.";
 
 [-----Navigation Sytstem Reset Rules-----]
 After going to a room from the Navigation Console:
@@ -699,7 +766,8 @@ Instead of viewing system response:
 		say "Outgoing transmission intercepted.[line break]";
 		say "Replacement message generated.[paragraph break]";
 		say "Message sent:[line break]";
-		say "'System functioning normally.'";
+		say "'System functioning normally.'[paragraph break]";
+		say "[paragraph break]No record of the original message remains.";
 		now Comms evidence found is true;
 
 [-----Bridge Comms System Reset Rules-----]
@@ -744,6 +812,9 @@ Instead of examining the container interface:
 		say "- destroy cargo[line break]";
 		say "- deliver cargo[line break]";
 		say "- interface with cargo";
+		
+After examining the container interface when Container examined is true:
+	say "[paragraph break]The display shifts slightly, as if adjusting to your presence.";
 				
 [-----Cargo System Final Choices-----]
 
