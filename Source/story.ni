@@ -478,14 +478,26 @@ After going from the Medbay:
 	continue the action.
 
 [-----Crew Quaters Datapad Rules-----]
+Instead of examining the crew bunk:
+	if the crew bunk is unaccessed:
+		now the crew bunk is accessed;
+		say "One of several narrow bunks fixed to the wall. The restraints are still clipped in place, but the bedding floats loose, as if whoever slept here left in a hurry.";
+	otherwise:
+		say "The bunk looks the same.[paragraph break]";
+		say "The restraint straps are still clipped shut.";
+
 Instead of examining the personal datapad:
-	say "The screen flickers as you bring it into view.[paragraph break]";
-	say "Personal Note — Captain Mara Voss[paragraph break]";
-	say "'Sleep is getting worse. Not just disruption — it feels directed. Like something is waiting for us to stop thinking clearly.'[paragraph break]";
-	say "'Crew discipline is slipping. Not through disobedience — through hesitation. Delays. Second-guessing simple actions.'[paragraph break]";
-	say "'I have ordered full adherence to routine. It is the only thing keeping us functional.'[paragraph break]";
-	say "[paragraph break]";
-	say "The entry ends abruptly.";
+	if the personal datapad is unaccessed:
+		now the personal datapad is accessed;
+		say "The screen flickers as you bring it into view.[paragraph break]";
+		say "Personal Note — Captain Mara Voss[paragraph break]";
+		say "'Sleep is getting worse. Not just disruption — it feels directed.'[paragraph break]";
+		say "'Crew discipline is slipping. Delays. Hesitation.'[paragraph break]";
+		say "'Routine is the only thing keeping us functional.'";
+	otherwise:
+		say "The screen is already active.[paragraph break]";
+		say "The final line lingers longer than the others.[paragraph break]";
+		say "'Routine is the only thing keeping us functional.'";
 
 [-----Captain's Terminal Access Rules-----]
 Instead of using the captain's terminal:
